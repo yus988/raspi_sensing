@@ -67,26 +67,30 @@ def main():
 
     myADXL345_2 = ADXL345(0x53)
     myADXL345_2.setUp()
+    csvlist = []
     # LOOP
     while perf_counter() - t_init < 10.0:
         # writer.writerow([perf_counter()])
 
-        print(time.time())
+        # print(time.time())
         x, y, z = myADXL345_1.getAccValue()
-        print("X=", x, "Y=", y, "Z=", z)
+        # print("X=", x, "Y=", y, "Z=", z)
 
-        csvlist = []
-        csvlist.extend([perf_counter(),x,y,z,"#1"])
-        writer.writerow(csvlist)
+        # csvlist = []
+        # csvlist.extend([perfcsvlist = []_counter(),x,y,z,"#1"])
+        csvlist.append([perf_counter(),x,y,z,"#1"])
+        # writer.writerow(csvlist)
 
         x2, y2, z2 = myADXL345_2.getAccValue()
         # print(time.time())
-        print("X2=", x2, "Y2=", y2, "Z2=", z2)
+        # print("X2=", x2, "Y2=", y2, "Z2=", z2)
 
-        csvlist = []
-        csvlist.extend([perf_counter(),x2,y2,z2,"#2"])
-        writer.writerow(csvlist)
+        # csvlist = []
+        csvlist.append([perf_counter(),x2,y2,z2,"#2"])
+        # writer.writerow(csvlist)
     
+    # writer.writerow(csvlist)
+    writer.writerows(csvlist)
     f.close()
 
 if __name__ == "__main__":
