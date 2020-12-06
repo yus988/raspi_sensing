@@ -11,11 +11,6 @@ import matplotlib.pyplot as plt
 import csv
 import datetime
 
-
-# DevAdr = 0x1d
-# DevAdr = 0x53
-
-
 # ADXL345 Class
 class ADXL345:
     def __init__(self, addr):
@@ -72,18 +67,16 @@ def main():
 
     myADXL345_2 = ADXL345(0x53)
     myADXL345_2.setUp()
-
-    file1 = open("myADXL345_1.csv", "w")
-    file2 = open("myADXL345_2.csv", "w")
-
     # LOOP
     while perf_counter() - t_init < 10.0:
+        # writer.writerow([perf_counter()])
 
         print(time.time())
         x, y, z = myADXL345_1.getAccValue()
         print("X=", x, "Y=", y, "Z=", z)
+
         csvlist = []
-        csvlist.extend(datetime.isoformat()),x,y,z)
+        csvlist.extend([perf_counter(),x,y,z,"#1"])
         writer.writerow(csvlist)
 
         x2, y2, z2 = myADXL345_2.getAccValue()
@@ -91,11 +84,10 @@ def main():
         print("X2=", x2, "Y2=", y2, "Z2=", z2)
 
         csvlist = []
-        csvlist.extend(datetime.isoformat()),x,y,z)
+        csvlist.extend([perf_counter(),x2,y2,z2,"#2"])
         writer.writerow(csvlist)
     
     f.close()
-
 
 if __name__ == "__main__":
     main()
