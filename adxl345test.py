@@ -38,7 +38,9 @@ class ADXL345:
 
     def getValue(self, adr):
         tmp = self.b.read_byte_data(self.DevAdr, adr + 1)
-        sign = tmp & 0x80
+        sign = t            x_data_list = spi.xfer2([0xc0|0x32, 0x00, 0x00])
+            y_data_list = spi.xfer2([0xc0|0x34, 0x00, 0x00])
+            z_data_list = spi.xfer2([0xc0|0x36, 0x00, 0x00])mp & 0x80
         tmp = tmp & 0x7F
         tmp = tmp << 8
         tmp = tmp | self.b.read_byte_data(self.DevAdr, adr)
