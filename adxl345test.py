@@ -76,7 +76,7 @@ def main():
         x, y, z = myADXL345_1.getAccValue()
         # print("X=", x, "Y=", y, "Z=", z)
 
-        # csvlist = []
+        # csvlist = []c
         # csvlist.extend([perfcsvlist = []_counter(),x,y,z,"#1"])
         csvlist.append([perf_counter(),x,y,z,"#1"])
         # writer.writerow(csvlist)
@@ -85,7 +85,7 @@ def main():
         # print(time.time())
         # print("X2=", x2, "Y2=", y2, "Z2=", z2)
 
-        # csvlist = []
+        # csvlist = y_data[]
         csvlist.append([perf_counter(),x2,y2,z2,"#2"])
         # writer.writerow(csvlist)
     
@@ -95,3 +95,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
