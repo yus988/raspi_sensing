@@ -12,8 +12,11 @@ import matplotlib.pyplot as plt
 
 def main():
     fig, ax = plt.subplots(1, 1)
-    x = np.arange(-np.pi, np.pi, 0.1)
-    y = np.sin(x)
+    # x = np.arange(-np.pi, np.pi, 0.1)
+    x = np.arange(0, 1, 0.1)
+    # y = np.sin(x)
+    y = np.zeros(10)
+    i = 0
     # 初期化的に一度plotしなければならない
     # そのときplotしたオブジェクトを受け取る受け取る必要がある．
     # listが返ってくるので，注意
@@ -23,8 +26,12 @@ def main():
     while True:
         # plotデータの更新
         x += 0.1
-        y = np.sin(x)
-
+        print(x)
+        # y = np.sin(x)
+        i += 1
+        y = np.append(y, i)
+        y = np.delete(y, 0)
+        print(y)
         # 描画データを更新するときにplot関数を使うと
         # lineオブジェクトが都度増えてしまうので，注意．
         # 一番楽なのは上記で受け取ったlinesに対して
@@ -42,8 +49,8 @@ def main():
         # ----> plt.pause(interval) これを使う!!! 引数はsleep時間
         plt.pause(.1)
 
-        except KeyboardInterrupt:
-            break
+        # except KeyboardInterrupt:
+        #     break
 
 if __name__ == "__main__":
     main()
