@@ -77,6 +77,7 @@ class ADXL362:
     def read_x(self):
         ''' Read the x value
             Returns:
+            
                 - Value of ug in x direction
         '''
         x = self.spi_read_two(0x0E)
