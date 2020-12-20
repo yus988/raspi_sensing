@@ -38,7 +38,7 @@ def main():
     
     spi.xfer2([0x2D, 0x08]) #測定スタート
 
-       #初期設定
+    #初期設定
     spi2 = spidev.SpiDev()   
     spi2.open(0,1)
     spi2.mode = 3  #ADXL345このデバイスはSPI mode3で動作
@@ -93,7 +93,7 @@ def main():
             y_data = 2 * 9.8 * y_data / 0x7FFF
             z_data = 2 * 9.8 * z_data / 0x7FFF
 
-            csvlist.append([perf_counter(),x_data,y_data,z_data,"#2"])
+            csvlist.append([perf_scounter(),x_data,y_data,z_data,"#2"])
 
             print(perf_counter(),"#2")
             print('x: {:4.2f}, y: {:4.2f}, z: {:4.2f} [m/s^2]'.format(x_data, y_data, z_data))
@@ -101,8 +101,8 @@ def main():
 
         
     except KeyboardInterrupt:
-        # writer.writerows(csvlist)
-        # f.close()
+        writer.writerows(csvlist)
+        f.close()
         print('!FINISH!')
     
 if __name__ == "__main__":

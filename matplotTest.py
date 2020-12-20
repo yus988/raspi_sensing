@@ -42,8 +42,8 @@ def main():
         # ----> plt.pause(interval) これを使う!!! 引数はsleep時間
         plt.pause(.1)
 
-        except KeyboardInterrupt:
-            break
+        # except KeyboardInterrupt:
+        #     break
 
 if __name__ == "__main__":
     main()
