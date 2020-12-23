@@ -93,7 +93,7 @@ def main():
             y_data = 2 * 9.8 * y_data / 0x7FFF
             z_data = 2 * 9.8 * z_data / 0x7FFF
 
-            csvlist.append([perf_scounter(),x_data,y_data,z_data,"#2"])
+            csvlist.append([perf_counter(),x_data,y_data,z_data,"#2"])
 
             print(perf_counter(),"#2")
             print('x: {:4.2f}, y: {:4.2f}, z: {:4.2f} [m/s^2]'.format(x_data, y_data, z_data))
