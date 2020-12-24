@@ -1,3 +1,4 @@
+
 ############################################################
 ### Library for Communicating with ADXL362 Accelerometer ###
 ### for Raspberry Pi using spidev                        ###
@@ -60,6 +61,7 @@ class ADXL362:
         ''' Turn on measurement mode, required after reset
         '''
         self.spi.cshigh = False
+        self.spi.max_speed_hz = 1000000
         
         # Read in current value in power control register
         pc_reg = self.spi_read_reg(0x2D)

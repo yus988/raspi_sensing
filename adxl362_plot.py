@@ -25,8 +25,8 @@ import time
 def main():
     accel_0 = ADXL362.ADXL362(0, 0)
     accel_0.begin_measure()
-    # accel_1 = ADXL362.ADXL362(0,1)
-    # accel_1.begin_measure()
+    accel_1 = ADXL362.ADXL362(0,1)
+    accel_1.begin_measure()
 
     # print (accel_0.read_xyz())
     # print (accel_1.read_xyz())
@@ -41,14 +41,14 @@ def main():
         # y = np.sin(x)
         # y = np.append(y, i)
         # y = 0.2
-        y = np.append(y, accel_0.read_xyz()[0])
+        y = np.append(y, accel_1.read_xyz()[0])
         y = np.delete(y, 0)
         print(y)
 
         lines.set_data(x, y)
         ax.set_xlim((x.min(), x.max()))
         ax.set_ylim((y.min(), y.max()))
-        plt.pause(.01)
+        plt.pause(.001)
 
         # time.sleep(2)
 
