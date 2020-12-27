@@ -48,10 +48,10 @@ def main():
         while True:
             # print(perf_counter())
 
-            for i in range(5):
+            for i in range(6):
                 data = readAdc(i, spi)
                 volts = convertVolts(data, v)
-                csvlist.append([perf_counter(), i, volts])
+                csvlist.append([perf_counter(), volts, i])
 
             print(volts)
             # MCP3008 の Vref に入れた電圧. ここでは 5V
