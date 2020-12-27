@@ -10,6 +10,7 @@
 import ADXL362
 import time
 
+
 accel_0 = ADXL362.ADXL362(0,0)
 accel_1 = ADXL362.ADXL362(0,1)
 accel_0.begin_measure()
