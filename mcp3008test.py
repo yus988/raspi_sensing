@@ -43,6 +43,7 @@ def main():
     data = []
     volts = []
     # 1ch -> 0, ..., 8ch -> 7
+    
     v = 5.0
     try:
         while True:
