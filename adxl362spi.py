@@ -46,62 +46,61 @@ def main():
 
             # x_data_list = spi.xfer2([0xc0|0x32, 0x00, 0x00])
             # y_data_list = spi.xfer2([0xc0|0x34, 0x00, 0x00])
-            # z_data_list = spi.xfer2([0xc0|0x36, 0x00, 0x00])
+            # z_data_2_1_list = spi.xfer2([0xc0|0x36, 0x00, 0x00])
             # x_data = x_data_list[1] | (x_data_list[2] << 8)
             # y_data = y_data_list[1] | (y_data_list[2] << 8)
-            # z_data = z_data_list[1] | (z_data_list[2] << 8)
-            # #2の補数を10進に変換
-            # if(x_data & 0x8000):
-            #     x_data = ((~x_data & 0xFFFF) + 1)*-1
-            # if(y_data & 0x8000):    
-            #     y_data = ((~y_data & 0xFFFF) + 1)*-1
-            # if(z_data & 0x8000):
-            #     z_data = ((~z_data & 0xFFFF) + 1)*-1
-            # #加速度に変換（Dレンジ ±2g）
-            # x_data = 2 * 9.8 * x_data / 0x7FFF
-            # y_data = 2 * 9.8 * y_data / 0x7FFF
-            # z_data = 2 * 9.8 * z_data / 0x7FFF
+            # z_data_1 = z_data_1_list[1] | (z_data_1_list[2] << 8
 
+            x_data_1  =  accel_0.read_xyz()[0]
+            y_data_1  =  accel_0.read_xyz()[1]
+            z_data_1  =  accel_0.read_xyz()[2]
 
-            x_data  =  accel_1.read_xyz()[0]
-            y_data  =  accel_1.read_xyz()[1]
-            z_data  =  accel_1.read_xyz()[2]
+            #2の補数を10進に変換
+            if(x_data_1 & 0x8000):
+                x_data_1 = ((~x_data_1 & 0xFFFF) + 1)*-1
+            if(y_data_1 & 0x8000):    
+                y_data_1 = ((~y_data_1 & 0xFFFF) + 1)*-1
+            if(z_data_1 & 0x8000):
+                z_data_1 = ((~z_data_1 & 0xFFFF) + 1)*-1
+            #加速度に変換（Dレンジ ±2g）
+            x_data_1 = 2 * 9.8 * x_data_1 / 0x7FFF
+            y_data_1 = 2 * 9.8 * y_data_1 / 0x7FFF
+            z_data_1 = 2 * 9.8 * z_data_1 / 0x7FFF
+            csvlist.append([perf_counter(),x_data_1,y_data_1,z_data_1,"#1"])
 
-            csvlist.append([perf_counter(),x_data,y_data,z_data,"#1"])
-
-            # print(perf_counter(),"#1")
-            # print('x: {:4.2f}, y: {:4.2f}, z: {:4.2f} [m/s^2]'.format(x_data, y_data, z_data))
+            print(perf_counter(),"#1")
+            print('x: {:4.2f}, y: {:4.2f}, z: {:4.2f} [m/s^2]'.format(x_data_1, y_data_1, z_data_1))
             # time.sleep(0.1)
 
             # #x,y,z方向の加速度を取得(2の補数表現)
-            # x_data_list = spi2.xfer2([0xc0|0x32, 0x00, 0x00])
-            # y_data_list = spi2.xfer2([0xc0|0x34, 0x00, 0x00])
-            # z_data_list = spi2.xfer2([0xc0|0x36, 0x00, 0x00])
-            # x_data = x_data_list[1] | (x_data_list[2] << 8)
-            # y_data = y_data_list[1] | (y_data_list[2] << 8)
-            # z_data = z_data_list[1] | (z_data_list[2] << 8)
+            # x_data_2_list = spi2.xfer2([0xc0|0x32, 0x00, 0x00])
+            # y_data_1_list = spi2.xfer2([0xc0|0x34, 0x00, 0x00])
+            # z_data_2_list = spi2.xfer2([0xc0|0x36, 0x00, 0x00])
+            # x_data_2 = x_data_2_list[1] | (x_data_2_list[2] << 8)
+            # y_data_2 = y_data_2_list[1] | (y_data_2_list[2] << 8)
+            # z_data_2 = z_data_2_list[1] | (z_data_2_list[2] << 8)
 
-            x_data  =  accel_1.read_xyz()[0]
-            y_data  =  accel_1.read_xyz()[1]
-            z_data  =  accel_1.read_xyz()[2]
+            x_data_2  =  accel_1.read_xyz()[0]
+            y_data_2  =  accel_1.read_xyz()[1]
+            z_data_2  =  accel_1.read_xyz()[2]
 
-            #2の補数を10進に変c換
+            #2の補数を10進に変換
         
-            # if(x_data & 0x8000):
-            #     x_data = ((~x_data & 0xFFFF) + 1)*-1
-            # if(y_data & 0x8000):    
-            #     y_data = ((~y_data & 0xFFFF) + 1)*-1
-            # if(z_data & 0x8000):
-            #     z_data = ((~z_data & 0xFFFF) + 1)*-1
-            # #加速度に変換（Dレンジ ±2g）
-            # x_data = 2 * 9.8 * x_data / 0x7FFF
-            # y_data = 2 * 9.8 * y_data / 0x7FFF
-            # z_data = 2 * 9.8 * z_data / 0x7FFF
+            if(x_data_2 & 0x8000):
+                x_data_2 = ((~x_data_2 & 0xFFFF) + 1)*-1
+            if(y_data_2 & 0x8000):    
+                y_data_2 = ((~y_data_2 & 0xFFFF) + 1)*-1
+            if(z_data_2 & 0x8000):
+                z_data_2 = ((~z_data_2 & 0xFFFF) + 1)*-1
+            #加速度に変換（Dレンジ ±2g）
+            x_data_2 = 2 * 9.8 * x_data_2 / 0x7FFF
+            y_data_2 = 2 * 9.8 * y_data_2 / 0x7FFF
+            z_data_2 = 2 * 9.8 * z_data_2 / 0x7FFF
 
-            csvlist.append([perf_counter(),x_data,y_data,z_data,"#2"])
+            csvlist.append([perf_counter(),x_data_2,y_data_2,z_data_2,"#2"])
 
-            # print(perf_counter(),"#2")
-            # print('x: {:4.2f}, y: {:4.2f}, z: {:4.2f} [m/s^2]'.format(x_data, y_data, z_data))
+            print(perf_counter(),"#2")
+            print('x: {:4.2f}, y: {:4.2f}, z: {:4.2f} [m/s^2]'.format(x_data_2, y_data_2, z_data_2))
             # time.sleep(0.1)
 
         

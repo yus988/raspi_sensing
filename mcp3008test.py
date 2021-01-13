@@ -48,7 +48,7 @@ def main():
         while True:
             # print(perf_counter())
 
-            for i in range(1):
+            for i in range(5):
                 data = readAdc(i, spi)
                 volts = convertVolts(data, v)
                 csvlist.append([perf_counter(), volts, i])
