@@ -55,6 +55,7 @@ def main():
 
             print(volts)
             # MCP3008 の Vref に入れた電圧. ここでは 5V
+            # time.sleep(1)
 
     except KeyboardInterrupt:
         writer.writerows(csvlist)
