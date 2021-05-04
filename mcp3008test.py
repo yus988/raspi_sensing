@@ -8,14 +8,12 @@ from time import perf_counter
 import csv
 import datetime
 
-
 # 解説参照
 def readAdc(channel, spi):
     adc = spi.xfer2([1, (8 + channel) << 4, 200])
     # print(adc)
     data = ((adc[1] & 3) << 8) + adc[2]
     return data
-
 
 def convertVolts(data, vref):
     volts = (data * vref) / float(1023)
@@ -44,14 +42,14 @@ def main():
     volts = []
     # 1ch -> 0, ..., 8ch -> 7
     
-    v = 5.0
+    vref = 5.0 # MCP3008 の Vref に入れた電圧. ここでは 5V
     try:
         while True:
             # print(perf_counter())
 
             for i in range(6):
                 data = readAdc(i, spi)
-                volts = convertVolts(data, v)
+                volts = convertVolts(data, vref)
                 csvlist.append([perf_counter(), volts, i])
 
             print(volts)
