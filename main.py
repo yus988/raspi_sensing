@@ -20,7 +20,6 @@ def convertVolts(data, vref):
     volts = round(volts, 4)
     return volts
 
-
 def main():
     spi = spidev.SpiDev()
     # spi.open(bus,device)
