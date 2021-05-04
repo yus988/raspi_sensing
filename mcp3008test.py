@@ -24,7 +24,7 @@ def convertVolts(data, vref):
 def main():
     spi = spidev.SpiDev()
     # spi.open(bus,device)
-    spi.open(0, 1)
+    spi.open(0, 0)
     spi.max_speed_hz = 1000000
 
     # 書き込むファイルの作成
