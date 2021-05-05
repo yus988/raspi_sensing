@@ -60,7 +60,7 @@ def main():
                     data = readAdc(channel, spi2)
                 volts = convertVolts(data, vref)
                 csvlist.append([perf_counter(), volts, i])
-                print(volts,i)
+            # print(volts,i)
             # MCP3008 の Vref に入れた電圧. ここでは 5V
             # time.sleep(1)
 
