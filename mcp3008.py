@@ -27,6 +27,11 @@ def main():
     spi.open(0, 0)
     spi.max_speed_hz = 1000000
 
+    spi2 = spidev.SpiDev()
+    # spi.open(bus,device)
+    spi2.open(0, 1)
+    spi2.max_speed_hz = 1000000
+
     # 書き込むファイルの作成
     dt_now = datetime.datetime.now()
     filename = './csv/' + dt_now.strftime('%m-%d_%H-%M-%S') + '.csv'
@@ -47,12 +52,15 @@ def main():
         while True:
             # print(perf_counter())
 
-            for i in range(6):
-                data = readAdc(i, spi)
+            for i in range(9):
+                if i < 8 :
+                    data = readAdc(i, spi)
+                else :
+                    channel = i - 8
+                    data = readAdc(channel, spi2)
                 volts = convertVolts(data, vref)
                 csvlist.append([perf_counter(), volts, i])
-
-            print(volts)
+                print(volts,i)
             # MCP3008 の Vref に入れた電圧. ここでは 5V
             # time.sleep(1)
 
