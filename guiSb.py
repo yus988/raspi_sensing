@@ -39,8 +39,9 @@ def toggleRecord(event):
     else:
         isRecord = False
         # toggleBtn['text']="Start recording"
-        btnText.set("Start recording")
-        toggleBtn.configure(bg='white')
+        app.quit()
+        # btnText.set("Start recording")
+        # toggleBtn.configure(bg='white')
 
 
 app = tk.Tk()
