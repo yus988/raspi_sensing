@@ -34,14 +34,16 @@ def toggleRecord(event):
         isRecord = True
         # toggleBtn['text']="Recording"
         btnText.set("Recording...")
-        toggleBtn.configure(bg='pale green')
+        toggleBtn.configure(
+            bg='#98fb98',
+            fg='#98fb98')
         app.after(100, recording)
     else:
         isRecord = False
-        # toggleBtn['text']="Start recording"
-        app.quit()
-        # btnText.set("Start recording")
-        # toggleBtn.configure(bg='white')
+        toggleBtn['text']="Start recording"
+        # app.quit()
+        btnText.set("Start \n Recording")
+        toggleBtn.configure(bg='white',fg='black')
 
 
 app = tk.Tk()
@@ -53,18 +55,20 @@ label = tk.Label(
     width=10,
     height=1,
     text=0,
-    font=("", 20)
+    font=("", 90)
 )
 # label.pack()
 
 btnText = tk.StringVar()
-btnText.set("Start recording")
+btnText.set("Start \n Recording")
 # creating start buttun
 toggleBtn = tk.Button(
     app,
     textvariable=btnText,
+    font=("", 40),
     height=360,
-    width=240)
+    width=240,
+    fg='#98fb98')
 
 toggleBtn.pack()
 toggleBtn.bind("<ButtonPress>", toggleRecord)
