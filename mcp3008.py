@@ -48,11 +48,12 @@ def main():
     # 1ch -> 0, ..., 8ch -> 7
     
     vref = 5.0 # MCP3008 の Vref に入れた電圧. ここでは 5V
+    channels = 6 # 加速度センサ一つにつき、3, 6, 9
     try:
         while True:
             # print(perf_counter())
 
-            for i in range(9):
+            for i in range(channels):
                 if i < 8 :
                     data = readAdc(i, spi)
                 else :
@@ -60,7 +61,7 @@ def main():
                     data = readAdc(channel, spi2)
                 volts = convertVolts(data, vref)
                 csvlist.append([perf_counter(), volts, i])
-            # print(volts,i)
+            print(volts,i)
             # MCP3008 の Vref に入れた電圧. ここでは 5V
             # time.sleep(1)
 
